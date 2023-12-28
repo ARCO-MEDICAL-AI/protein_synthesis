@@ -1,0 +1,48 @@
+
+{
+    "Glutationa": [
+        "Glu",
+        "Cys",
+        "Gly"
+    ],
+
+    "TRH": [
+        "Pyr",
+        "His",
+        "Pro"
+    ],
+    "GnRH": [
+        "Glu",
+        "His",
+        "Trp",
+        "Ser",
+        "Tyr",
+        "Gly",
+        "Leu",
+        "Arg",
+        "Pro",
+        "Gly"
+    ],
+    "Ocitocina": [
+        "Cys",
+        "Tyr",
+        "Ile",
+        "Gln",
+        "Asn",
+        "Cys",
+        "Pro",
+        "Leu",
+        "Gly"
+    ],
+    "Vasopressina": [
+        "Cys",
+        "Tyr",
+        "Phe",
+        "Gln",
+        "Asn",
+        "Cys",
+        "Pro",
+        "Arg",
+        "Gly"
+    ]
+}
