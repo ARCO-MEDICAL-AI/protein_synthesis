@@ -40,4 +40,20 @@ class MonomericProteins:
 
         return codon_string
 
+    def synthesize_multiple_proteins(self, number_of_proteins):
+        
+        for i in range(number_of_proteins):
+            try:
+                # Get the protein and its amino acid code
+                amino_acids = self.metabolic_demand()
+
+                # Get the codon string
+                codon_sequence = self.create_codon_string(amino_acids)
+
+                # Print the results
+                print(f"Codon sequence for protein: {codon_sequence}")
+                
+            except Exception as e:
+                print(f"An error occurred: {e}")
+
     
