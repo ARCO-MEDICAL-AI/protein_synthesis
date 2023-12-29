@@ -14,14 +14,16 @@ class MonomericProteins:
         with open("C:\\Users\\Lenovo\\Desktop\\Sintese proteica\\Codons_Aminoacidos.json") as file2:
             self.codons_code = json.load(file2)
 
+        self.cumulative_dna_string = ''
+
     # Create a function that provides a metabolic demand that requires the protein (consider having its own class)
     def metabolic_demand(self):
         # Select a random protein from the list of protein names
         protein_needed = random.choice(self.protein_keynames)
-        print(protein_needed)
+        print(f'The protein needed is: {protein_needed}')
         protein_aminoacids_code = self.geneticinfo_monoproteins.get(protein_needed)
         # List with the amino acids necessary for the demanded protein
-        print(protein_aminoacids_code)
+        print(f'The aminoacids sequence to synthesize the {protein_needed} is: {protein_aminoacids_code}')
         # Return the amino acids that form the protein
         return protein_aminoacids_code
 
@@ -30,16 +32,23 @@ class MonomericProteins:
     def create_codon_string(self, sequence):
         codon_string = ''
         for aminoacid in sequence:
+            if aminoacid == 'Pyr':
+                codon_string += 'PYR'
+            else:
             # Select a random value from a dictionary key
-            codon = random.choice(self.codons_code.get(aminoacid))
-            codon_string += codon
+                if aminoacid in self.codons_code:
+                    codon = random.choice(self.codons_code.get(aminoacid))
+                    codon_string += codon
         
         stop = random.choice((self.codons_code.get('Stop')))
-        print(stop)
+        print(f'The stop codon is: {stop}')
         codon_string += stop
 
-        return codon_string
 
+        self.cumulative_dna_string += codon_string
+
+        return codon_string
+    
     def synthesize_multiple_proteins(self, number_of_proteins):
         
         for i in range(number_of_proteins):
@@ -50,10 +59,10 @@ class MonomericProteins:
                 # Get the codon string
                 codon_sequence = self.create_codon_string(amino_acids)
 
-                # Print the results
+                # Print or store the results
                 print(f"Codon sequence for protein: {codon_sequence}")
-                
             except Exception as e:
                 print(f"An error occurred: {e}")
 
-    
+        print(f"\nCumulative DNA string for all proteins: {self.cumulative_dna_string}")
+
